@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register your account</title>
+</head>
+<style>
+    html {
+    background-color:#259778;
+
+    }
+    .register {
+    margin-top:10px;
+    }
+
+    form input[type=text],[type=email],[type=password] {
+        text-align:center;
+        width:250px;
+        margin:30px 30px auto 30px;
+        outline:none;
+        height:40px;
+        border-radius:4px;
+        border:none;
+        background-color:#c8e4ff;
+        }
+        .card {
+        background-color:#FEFFFF;
+        width:800px;
+        height:500px;
+        border-radius:20px;
+        margin-top:6%;
+        margin-left:25%;
+        display:grid;
+        place-items:center;
+        }
+        .mid button{
+        height:37px;
+        width:100px;
+        margin-top:30px;
+        margin-bottom:20px;
+        margin-left:42%;
+        border-radius:4px;
+        border:none;
+        background-color:#259778;
+        color:white;
+        }
+        h1 {
+        font-size:30px;
+        font-family:Arial;
+
+        }
+
+.topnav {
+  overflow: hidden;
+  height:60px;
+  width:100%;
+  overflow: hidden;
+  background-color: #2AAD89;
+  margin:0px;
+  padding:0px;
+}
+body {
+margin:0px;
+padding:0px;
+}
+
+.title-name {
+line-height:8px;
+margin-left:30px;
+color:white;
+font-size:30px;
+font-family:Arial;
+}
+.message {
+
+font-family:Arial;
+font-size:12px;
+}
+
+
+
+</style>
+<body>
+
+</body>
+<ul class="topnav">
+    <h2 class="title-name">Sell&Buy</h2>
+</ul>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+
+    <div class="card">
+        <h1 style="color:#259778; margin-top:50px;">Create New Account</h1>
+
+
+        <div class="register">
+            <div class="row1">
+                <input type="text" placeholder="enter your full name *" name="Fullname" required>
+                <input type="text" placeholder="enter your username *" name="Username" required>
+
+            </div>
+
+
+            <div class="row2">
+
+                <input type="email" placeholder="enter your email *" name="Email" required>
+                <input type="text" placeholder="+91xxxxxxxxx *" name="Phonenumber" required>
+            </div>
+            <div class="row3">
+
+                <input type="password" placeholder="enter your password *" name="Password" required>
+                <input type="password" placeholder="confirm your password *" name="Confirm_password" required>
+            </div>
+
+            <div class="mid">
+                <button type="submit">Register</button>
+            </div>
+
+
+        </div>
+         <div class="already-login">
+            <em>Already Registered? <a href="{% url 'login' %}">Login</a> </em>
+        </div>
+
+        {% if messages %}
+        {% for msg in messages %}
+        <br>
+        <div style="color:red;" class="message">
+            <b>{{msg}}</b>
+        </div>
+
+        {% endfor %}
+        {% endif %}
+        <br>
+    </div>
+
+
+</form>
+</html>

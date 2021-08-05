@@ -1,0 +1,15 @@
+Django
+.env
+migrations
+db.sqlite3
+*.log
+*.pot
+*.pyc
+_pycache_
+media
+.idea/*
+myvenv/
+
+
+# Backup files #
+*.bak

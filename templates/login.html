@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+</head>
+<style>
+html {
+background-color:#259778;
+}
+    .topnav {
+  overflow: hidden;
+  height:60px;
+  width:100%;
+  overflow: hidden;
+  background-color: #2AAD89;
+  margin:0px;
+  padding:0px;
+}
+body {
+margin:0px;
+padding:0px;
+}
+.title-name {
+line-height:8px;
+margin-left:30px;
+color:white;
+font-size:30px;
+font-family:Arial;
+}
+form {
+
+        margin:80px auto auto auto;
+        width:500px;
+        text-align:center;
+        display:grid;
+        place-items:center;
+        }
+.formcontainer{
+        }
+
+        form input{
+        text-align:center;
+        width:254px;
+        margin-top:20px;
+        outline:none;
+        height:32px;
+        border-radius:4px;
+        border:none;
+        background-color:#c8e4ff;
+
+        }
+        .submit{
+        height:37px;
+
+        width:257px;
+        margin-top:20px;
+        border-radius:4px;
+        border:none;
+        background-color:#2AAD89;
+        color:white;
+        }
+
+        .card {
+        background-color:#FEFFFF;
+        width:400px;
+        height:500px;
+        border-radius:20px;
+        margin-top:3%;
+        margin-left:6%;
+        display:grid;
+        place-items:center;
+        }
+
+h5 {
+font-size:20px;
+font-family:arial;
+margin-top:50px;
+
+color:#259778;
+}
+
+.forgotpassword {
+text-decoration:none
+}
+
+
+
+</style>
+<body>
+<ul class="topnav">
+    <h2 class="title-name">Sell&Buy</h2>
+</ul>
+<form method="POST">
+    {% csrf_token %}
+    <div class="card">
+        <h5 style="margin-top:10px;">Login to your account</h5>
+
+        <div class="formcontainer">
+            <input type="text" placeholder="enter your email address" name="Email">
+
+            <input type="password" placeholder="enter your password" name="Password">
+            <br>
+            <button class="submit">Login</button>
+            <div class="googlefield">
+                {% include "sociallogin/provider_list.html" with process="login" %}
+            </div>
+            <br>
+            <br>
+        </div>
+        <div style="color:blue; font-family:Arial; font-size:12px; text-decoration:none;" >
+             <a class="forgotpassword" href="{% url 'forgotpassword' %}">Forgotten Password ?</a>
+            <h4>Don't have an account? <a href="{% url 'register' %}" style="color:blue; text-decoration:none;">Register</a></h4>
+        </div>
+        {% if messages %}
+        {% for msg in messages %}
+        <div style="color:red; font-family:Arial; font-size:12px;" class="message">
+            <b>{{msg}}</b>
+        </div>
+
+        {% endfor %}
+        {% endif %}
+
+
+    </div>
+</form>
+</body>
+</html>

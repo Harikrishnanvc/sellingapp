@@ -1,0 +1,44 @@
+{% load socialaccount %}
+{% load static %}
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.google-btn {
+color:white;
+width:257px;
+height:37px;
+border:none;
+background-color:#ff2500;
+text-decoration:none;
+border-radius:4px;
+font-size:17px;
+margin-top:20px;
+}
+
+</style>
+    </head>
+<body>
+{% get_providers as socialaccount_providers %}
+
+{% for provider in socialaccount_providers %}
+{% if provider.id == "openid" %}
+{% for brand in provider.get_brands %}
+<div>
+  <a title="{{brand.name}}"
+     class="socialaccount_provider {{provider.id}} {{brand.id}}"
+     href="{% provider_login_url provider.id openid=brand.openid_url process=process %}"
+     >{{brand.name}}</a>
+</div>
+{% endfor %}
+{% endif %}
+<div class="my-2">
+  <a title="{{provider.name}}" class="socialaccount_provider"
+     href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}" >
+      <div>
+      <button type="button" class="google-btn"><i class="fa fa-google"> &nbsp Login with Google</i></button>
+          </div>
+  </a>
+</div>
+{% endfor %}
+</body>

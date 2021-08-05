@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>edit profile</title>
+    <style>
+    html,body {
+	height: 100%;
+}
+
+body.my-login-page {
+	background-color: #f7f9fb;
+	font-size: 14px;
+}
+
+.my-login-page .brand {
+	width: 90px;
+	height: 90px;
+	overflow: hidden;
+	border-radius: 50%;
+	margin: 40px auto;
+	box-shadow: 0 4px 8px rgba(0,0,0,.05);
+	position: relative;
+	z-index: 1;
+}
+
+.my-login-page .brand img {
+	width: 100%;
+}
+
+.my-login-page .card-wrapper {
+	width: 400px;
+}
+
+.my-login-page .card {
+	border-color: transparent;
+	box-shadow: 0 4px 8px rgba(0,0,0,.05);
+}
+
+.my-login-page .card.fat {
+	padding: 10px;
+}
+
+.my-login-page .card .card-title {
+	margin-bottom: 30px;
+}
+
+.my-login-page .form-control {
+	border-width: 2.3px;
+}
+
+.my-login-page .form-group label {
+	width: 100%;
+}
+
+.my-login-page .btn.btn-block {
+	padding: 12px 10px;
+}
+
+.my-login-page .footer {
+	margin: 40px 0;
+	color: #888;
+	text-align: center;
+}
+
+@media screen and (max-width: 425px) {
+	.my-login-page .card-wrapper {
+		width: 90%;
+		margin: 0 auto;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.my-login-page .card.fat {
+		padding: 0;
+	}
+
+	.my-login-page .card.fat .card-body {
+		padding: 15px;
+	}
+}
+
+.main{
+margin-top:150px;
+margin-left:600px;
+width:400px;
+
+}
+.card-title {
+color:red;
+}
+.form-group m-0 {
+color:red;
+}
+
+
+    </style>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Kodinger">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>My Login Page &mdash; Bootstrap 4 Login Page Snippet</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/my-login.css">
+</head>
+
+<div class="main">
+    <div class="card fat">
+        <div class="card-body">
+            <h4 class="card-title">Edit</h4>
+            <form method="post" action="{% url 'passwordchange' %}">
+                {% csrf_token %}
+
+{% for i in userdetails %}
+
+                <div class="form-group">
+                    <label for="name">Fullname</label>
+                    <input id="name" type="text" class="form-control" name="Fullname" required autofocus value="{{i.Fullname}}">
+                    <div class="invalid-feedback">
+                        What's your name?
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="number">Phonenumber</label>
+                    <input id="number" type="text" class="form-control" name="Phonenumber" required autofocus value="{{i.Phonenumber}}">
+                    <div class="invalid-feedback">
+                        What's your name?
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="email">E-Mail Address</label>
+                    <input id="email" type="email" class="form-control" name="Email" required value="{{i.Email}}">
+                    <div class="invalid-feedback">
+                        Your email is invalid
+                    </div>
+                </div>
+{%endfor %}
+
+                <div class="form-group m-0">
+                    <button type="submit" class="btn  btn-block" style="background-color: #3bb78f;
+background-image: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%); color:white">
+                        Update
+                    </button>
+
+                </div>
+                <br>
+                {% if messages %}
+               {% for msg in messages %}
+                <b>{{msg}}</b>
+
+               {% endfor %}
+            {% endif %}
+            </form>
+        </div>
+    </div>
+
+</div>
+</div>
+</div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="js/my-login.js"></script>
+</body>
+</html>
+</body>
+</html>
