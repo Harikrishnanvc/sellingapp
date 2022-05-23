@@ -157,8 +157,6 @@ EMAIL_FILE_PATH = str(BASE_DIR.joinpath('sent_emails'))
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-# EMAIL_HOST_USER = 'harikrishnanviswanath2@gmail.com'
-# EMAIL_HOST_PASSWORD = 'Chandrodayam2@'
 EMAIL_HOST_USER=config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD=config|('EMAIL_HOST_PASSWORD')
 
@@ -184,6 +182,3 @@ SOCIALACCOUNT_PROVIDERS = {
 
 LOGIN_REDIRECT_URL = 'socialuser'
 ACCOUNT_LOGOUT_REDIRECT_URL = 'login'
-
-# clientid   1077571381239-bc4iiitv95qb0b97kcni3ga4fdl5ir1k.apps.googleusercontent.com
-# secret   veR5xGi7PyjmMYaxp2OEZTti
